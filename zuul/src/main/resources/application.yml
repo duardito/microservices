@@ -1,0 +1,52 @@
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+ribbon.eureka.enabled: false
+
+zuul:
+  #Service will be mapped under the /api URI
+  prefix: /api
+#  Uncomment to disable auto-registering all services read from Eureka
+  ##ignoredServices: '*'
+  routes:
+    beatiful-service:
+      path: /service-client/**
+      serviceId: beatifull
+      stripPrefix: false
+    ugly-service:
+      path: /service-buy/**
+      serviceId: ugly
+      stripPrefix: false
+
+
+server:
+  port: 10000
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+
+beatifull:
+  ribbon:
+    eureka:
+      enabled: false
+    listOfServers: localhost:8080
+    ServerListRefreshInterval: 15000
+
+
+ugly:
+  ribbon:
+    eureka:
+      enabled: false
+    listOfServers: localhost:8486
+    ServerListRefreshInterval: 15000
+
+management.security.enabled: false

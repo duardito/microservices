@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: sample-hystrix-monitor
+  cloud:
+    config:
+      discovery:
+        enabled: false
+
+
+
+server:
+  port: 10500
+
+management:
+  port: -1
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5
+
+turbine:
+  clusterNameExpression: new String("default")
+  appConfig: ugly,beatifull
+  combineHostPort: true

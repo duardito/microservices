@@ -1,11 +1,11 @@
 eureka:
   client:
     registerWithEureka: false
-    fetchRegistry: false
+    fetchRegistry: true
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 
-ribbon.eureka.enabled: false
+##ribbon.eureka.enabled: true
 
 zuul:
   #Service will be mapped under the /api URI
@@ -22,7 +22,6 @@ zuul:
       serviceId: ugly
       stripPrefix: false
 
-
 server:
   port: 10000
 
@@ -33,20 +32,5 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 20000
-
-beatifull:
-  ribbon:
-    eureka:
-      enabled: false
-    listOfServers: localhost:8080
-    ServerListRefreshInterval: 15000
-
-
-ugly:
-  ribbon:
-    eureka:
-      enabled: false
-    listOfServers: localhost:8486
-    ServerListRefreshInterval: 15000
 
 management.security.enabled: false

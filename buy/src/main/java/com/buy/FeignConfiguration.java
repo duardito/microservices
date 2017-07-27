@@ -3,10 +3,9 @@ package com.buy;
 import feign.Logger;
 import feign.Request;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 
-@Configuration
+//@Configuration
 public class FeignConfiguration {
 
     public static final int FIVE_SECONDS = 5000;

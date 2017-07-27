@@ -13,3 +13,13 @@ eureka:
           enabled: true
 server:
   port: 8486
+
+ugly:
+   ribbon:
+     # Eureka vipAddress of the target service
+
+     # Interval to refresh the server list from the source (ms)
+     ServerListRefreshInterval: 30000
+     NIWSServerListClassName: com.zuul.MyServerList
+     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+    # DeploymentContextBasedVipAddresses: ugly-service

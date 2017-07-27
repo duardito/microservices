@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 import java.util.Map;
 
-@RibbonClient(name = "beatifull-service", configuration = RibbonConfiguration.class)
+@RibbonClient(name = "beatifull-v1", configuration = MyServerList.class)
 public class RibbonClientTest {
 
     @LoadBalanced
@@ -22,12 +22,16 @@ public class RibbonClientTest {
     @Autowired
     RestTemplate restTemplate;
 
+    private static final String BEATIFULL = "beatifull";
+
     public String execute(String name) {
 
         Map<String, String> params = new HashMap<String, String>();
         params.put("name", name);
 
-        String greeting = this.restTemplate.getForObject("http://beatifull/service-client/{name}", String.class, params);
+        String url = String.format("http://%s/service-client/{name}", BEATIFULL);
+
+        String greeting = this.restTemplate.getForObject(url, String.class, params);
         return String.format("%s, %s!", greeting, name);
     }
 
@@ -35,8 +39,8 @@ public class RibbonClientTest {
 
         Map<String, String> params = new HashMap<String, String>();
         params.put("name", name);
-
-        User greeting = this.restTemplate.getForObject("http://beatifull/service-client/{name}", User.class, params);
+        String url = String.format("http://%s/service-client/{name}", BEATIFULL);
+        User greeting = this.restTemplate.getForObject(url, User.class, params);
         return greeting;
     }
 

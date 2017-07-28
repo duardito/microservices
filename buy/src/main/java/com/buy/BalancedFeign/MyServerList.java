@@ -12,11 +12,11 @@ public class MyServerList implements ServerList<Server> {
     @Override
     public final List<Server> getUpdatedListOfServers() {
         // TODO do some fancy stuff here
-        return Arrays.asList( new Server("localhost", 8080));
+        return Arrays.asList( new Server("192.168.99.100", 8081));
     }
 
     @Override
     public final List<Server> getInitialListOfServers() {
-        return Arrays.asList( new Server("localhost", 8080));
+        return Arrays.asList( new Server("192.168.99.100", 8081));
     }
 }

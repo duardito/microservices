@@ -10,11 +10,11 @@ public class MyServerList implements ServerList<Server> {
 
     @Override
     public final List<Server> getUpdatedListOfServers() {
-        return Arrays.asList(new Server("localhost", 8486));
+        return Arrays.asList(new Server("192.168.99.100", 8486));
     }
 
     @Override
     public final List<Server> getInitialListOfServers() {
-        return Arrays.asList(new Server("localhost", 8486));
+        return Arrays.asList(new Server("192.168.99.100", 8486));
     }
 }
